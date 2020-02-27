@@ -19,6 +19,7 @@ module Models where
 
 import           Control.Monad.Reader
 import           Data.Aeson
+import           Data.Aeson.Casing
 import           Data.Time ( UTCTime, getCurrentTime )
 import           Database.Persist.Sql
 import           Database.Persist.TH
@@ -30,13 +31,29 @@ Subscription sql=subscriptions
     createdAt UTCTime
     updatedAt UTCTime
     deriving Show
+Book sql=books
+    title String
+    author String
+    createdAt UTCTime
+    updatedAt UTCTime
+    deriving Show Generic
 |]
+instance ToJSON Book
 
 data NewSubscription = NewSubscription {
-    nEmail :: String
+    nsEmail :: String
 } deriving (Show, Eq, Read, Generic)
 
-instance FromJSON NewSubscription
+instance FromJSON NewSubscription where
+    parseJSON = genericParseJSON $ aesonPrefix camelCase
+
+data NewBook = NewBook {
+    nbTitle :: String
+,   nbAuthor :: String
+} deriving (Show, Eq, Read, Generic)
+
+instance FromJSON NewBook where
+    parseJSON = genericParseJSON $ aesonPrefix camelCase
 
 runDb :: (MonadReader SqlBackend m, MonadIO m) => SqlPersistT IO b -> m b
 runDb query = do
