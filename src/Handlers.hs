@@ -9,7 +9,7 @@ import Database.Persist.Sql
 import Models
 import Types
 
-subscriptionHandler :: (Monad m, MonadReader AppState m, MonadIO m) => NewSubscription -> m ()
+subscriptionHandler :: (MonadReader AppState m, MonadIO m) => NewSubscription -> m ()
 subscriptionHandler NewSubscription{ nsEmail = subscriptionEmail } = do
   now <- liftIO getCurrentTime
   runDb $ insert (Subscription subscriptionEmail now now)

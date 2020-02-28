@@ -6,21 +6,15 @@
 
 module API (api, routes) where
 
-import Control.Exception          (throwIO)
 import           Control.Monad.Except
-import Control.Monad.Trans.Reader (ReaderT, runReaderT)
-import           Database.Persist.Sql
-import Data.Proxy                 (Proxy (..))
-import Network.Wai.Handler.Warp   (run)
+import Control.Monad.Trans.Reader (ReaderT)
 
 import Servant
-import Servant.Server
 
 import Servant.API.Generic
 import Servant.Server.Generic
 
 import Handlers
-import Models
 import Types
 
 data Routes route = Routes
