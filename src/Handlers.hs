@@ -15,13 +15,7 @@ subscriptionHandler NewSubscription{ nsEmail = subscriptionEmail } = do
   runDb $ insert (Subscription subscriptionEmail now now)
   return ()
 
-getBooksHandler :: (MonadReader AppState m) => m [NewBook]
+getBooksHandler :: (MonadReader AppState m) => m [Book]
 getBooksHandler = do
   state <- ask
   return $ readingList state
-
-addBookHandler :: (Monad m, MonadReader AppState m, MonadIO m) => NewBook -> m ()
-addBookHandler NewBook{ nbTitle = title, nbAuthor = author } = do
-  now <- liftIO getCurrentTime
-  runDb $ insert (Book title author now now)
-  return ()

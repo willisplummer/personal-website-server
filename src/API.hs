@@ -25,8 +25,7 @@ import Types
 
 data Routes route = Routes
     { _subscribe :: route :- "subscriptions" :> ReqBody '[JSON] NewSubscription :> Post '[JSON] ()
-    , _addBook :: route :- "books" :> ReqBody '[JSON] NewBook :> Post '[JSON] ()
-    , _getBooks :: route :- "books" :> Get '[JSON] [NewBook]
+    , _getBooks :: route :- "books" :> Get '[JSON] [Book]
     }
   deriving (Generic)
 
@@ -38,7 +37,6 @@ type AppT = ReaderT AppState (ExceptT ServerError IO)
 routes :: ToServant Routes (AsServerT AppT)
 routes = genericServerT Routes
     { _subscribe = subscriptionHandler
-    , _addBook = addBookHandler
     , _getBooks = getBooksHandler
     }
 

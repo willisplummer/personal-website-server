@@ -32,15 +32,7 @@ Subscription sql=subscriptions
     createdAt UTCTime
     updatedAt UTCTime
     deriving Show Generic
-Book sql=books
-    title String
-    author String
-    createdAt UTCTime
-    updatedAt UTCTime
-    deriving Show Generic
 |]
-instance ToJSON Book where
-    toJSON = genericToJSON $ aesonPrefix camelCase
 
 runDb :: (MonadReader AppState m, MonadIO m) => SqlPersistT IO b -> m b
 runDb query = do

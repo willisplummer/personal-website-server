@@ -31,18 +31,18 @@ data NewSubscription = NewSubscription {
 instance FromJSON NewSubscription where
     parseJSON = genericParseJSON $ aesonPrefix camelCase
 
-data NewBook = NewBook {
+data Book = Book {
     nbTitle :: String
 ,   nbAuthor :: String
 } deriving (Show, Eq, Read, Generic)
 
-instance FromJSON NewBook where
+instance FromJSON Book where
     parseJSON = genericParseJSON $ aesonPrefix camelCase
 
-instance ToJSON NewBook where
+instance ToJSON Book where
     toJSON = genericToJSON $ aesonPrefix camelCase
 
 data AppState = AppState {
   sql :: SqlBackend
-, readingList :: [NewBook]
+, readingList :: [Book]
 }
