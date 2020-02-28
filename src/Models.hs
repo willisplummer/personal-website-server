@@ -30,7 +30,7 @@ Subscription sql=subscriptions
     email String
     createdAt UTCTime
     updatedAt UTCTime
-    deriving Show
+    deriving Show Generic
 Book sql=books
     title String
     author String
