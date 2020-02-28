@@ -21,18 +21,19 @@ import Servant.Server.Generic
 
 import Handlers
 import Models
+import Types
 
 data Routes route = Routes
     { _subscribe :: route :- "subscriptions" :> ReqBody '[JSON] NewSubscription :> Post '[JSON] ()
     , _addBook :: route :- "books" :> ReqBody '[JSON] NewBook :> Post '[JSON] ()
-    , _getBooks :: route :- "books" :> Get '[JSON] [Book]
+    , _getBooks :: route :- "books" :> Get '[JSON] [NewBook]
     }
   deriving (Generic)
 
 api :: Proxy (ToServantApi Routes)
 api = genericApi (Proxy :: Proxy Routes)
 
-type AppT = ReaderT SqlBackend (ExceptT ServerError IO)
+type AppT = ReaderT AppState (ExceptT ServerError IO)
 
 routes :: ToServant Routes (AsServerT AppT)
 routes = genericServerT Routes

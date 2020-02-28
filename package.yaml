@@ -33,7 +33,9 @@ dependencies:
 - time
 - transformers
 - wai
+- wai-cors
 - warp
+- yaml
 
 library:
   source-dirs: src

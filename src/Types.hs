@@ -15,34 +15,34 @@
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE UndecidableInstances #-}
 
-module Models where
+module Types where
 
 import           Control.Monad.Reader
 import           Data.Aeson
 import           Data.Aeson.Casing
-import           Data.Time ( UTCTime, getCurrentTime )
 import           Database.Persist.Sql
-import           Database.Persist.TH
+import           Data.Time ( UTCTime, getCurrentTime )
 import           GHC.Generics
-import           Types
 
-share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
-Subscription sql=subscriptions
-    email String
-    createdAt UTCTime
-    updatedAt UTCTime
-    deriving Show Generic
-Book sql=books
-    title String
-    author String
-    createdAt UTCTime
-    updatedAt UTCTime
-    deriving Show Generic
-|]
-instance ToJSON Book where
+data NewSubscription = NewSubscription {
+    nsEmail :: String
+} deriving (Show, Eq, Read, Generic)
+
+instance FromJSON NewSubscription where
+    parseJSON = genericParseJSON $ aesonPrefix camelCase
+
+data NewBook = NewBook {
+    nbTitle :: String
+,   nbAuthor :: String
+} deriving (Show, Eq, Read, Generic)
+
+instance FromJSON NewBook where
+    parseJSON = genericParseJSON $ aesonPrefix camelCase
+
+instance ToJSON NewBook where
     toJSON = genericToJSON $ aesonPrefix camelCase
 
-runDb :: (MonadReader AppState m, MonadIO m) => SqlPersistT IO b -> m b
-runDb query = do
-  state <- ask
-  liftIO $ runSqlConn query (sql state)
+data AppState = AppState {
+  sql :: SqlBackend
+, readingList :: [NewBook]
+}
