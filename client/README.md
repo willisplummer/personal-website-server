@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## TODOS:
+- static lucid html instead of this client
+- writing links
+
 ## Available Scripts
 
 In the project directory, you can run:
