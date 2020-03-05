@@ -9,17 +9,21 @@ module API (api, routes) where
 import           Control.Monad.Except
 import Control.Monad.Trans.Reader (ReaderT)
 
+import Lucid
 import Servant
 
 import Servant.API.Generic
 import Servant.Server.Generic
+import Servant.HTML.Lucid
 
 import Handlers
 import Types
 
 data Routes route = Routes
-    { _subscribe :: route :- "subscriptions" :> ReqBody '[JSON] NewSubscription :> Post '[JSON] ()
-    , _getBooks :: route :- "books" :> Get '[JSON] [Book]
+    { _subscribe :: route :- "api" :> "subscriptions" :> ReqBody '[FormUrlEncoded, JSON] NewSubscription :> Post '[JSON] ()
+    , _getBooks :: route :- "api" :> "books" :> Get '[JSON] [Book]
+    , _getHome :: route :- Get '[HTML] (Html ())
+    , _getReadingList :: route :- "books" :> Get '[HTML] (Html ())
     }
   deriving (Generic)
 
@@ -32,5 +36,7 @@ routes :: ToServant Routes (AsServerT AppT)
 routes = genericServerT Routes
     { _subscribe = subscriptionHandler
     , _getBooks = getBooksHandler
+    , _getHome = return renderHomePage
+    , _getReadingList = renderBooksPage
     }
 

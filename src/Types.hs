@@ -18,22 +18,32 @@
 module Types where
 
 import           Control.Monad.Reader
-import           Data.Aeson
+import           Data.Aeson (genericParseJSON, genericToJSON, FromJSON, ToJSON, toJSON, parseJSON)
 import           Data.Aeson.Casing
+import           Data.Char (toLower)
 import           Database.Persist.Sql
 import           Data.Time ( UTCTime, getCurrentTime )
 import           GHC.Generics
+import           Web.Internal.FormUrlEncoded
 
 data NewSubscription = NewSubscription {
     nsEmail :: String
 } deriving (Show, Eq, Read, Generic)
 
+myOptions :: FormOptions
+myOptions = FormOptions
+ { fieldLabelModifier = map toLower . drop 2 }
+
+instance FromForm NewSubscription where
+    fromForm =
+        genericFromForm myOptions
+
 instance FromJSON NewSubscription where
     parseJSON = genericParseJSON $ aesonPrefix camelCase
 
 data Book = Book {
-    nbTitle :: String
-,   nbAuthor :: String
+    bTitle :: String
+,   bAuthor :: String
 } deriving (Show, Eq, Read, Generic)
 
 instance FromJSON Book where
