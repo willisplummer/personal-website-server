@@ -16,8 +16,13 @@ docker push willisplummer/haskell-personal-website:latest
 ### Deploying
 
 ```
-docker build . -- tag willisplummer/haskell-personal-website:latest
 heroku container:login
 heroku container:push web
 heroku container:release web
 ```
+
+### Migrating the heroku db
+
+- get the database url (DB_URL) from the heroku config vars
+- `stack build`
+- `DATABASE_URL=DB_URL stack exec migrate-db-exe`

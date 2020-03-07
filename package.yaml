@@ -59,6 +59,18 @@ executables:
     dependencies:
     - personal-website-server
 
+  migrate-db-exe:
+    main:                MigrateDB.hs
+    source-dirs:         app
+    ghc-options:
+    - -main-is
+    - MigrateDB
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - personal-website-server  
+
 tests:
   personal-website-server-test:
     main:                Spec.hs
