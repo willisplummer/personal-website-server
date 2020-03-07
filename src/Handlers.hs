@@ -8,7 +8,7 @@ module Handlers where
 
 import           Control.Monad.Reader
 import           Control.Monad.Trans
-import Data.Text
+import Data.Text (Text, pack)
 import Data.Time
 import Database.Persist.Sql
 import Lucid
@@ -45,7 +45,7 @@ renderBooksPage = do
   state <- ask
   let
     booksByYear :: [(String, [Book])]
-    booksByYear = Map.toList . readingList $ state
+    booksByYear = reverse . Map.toList . readingList $ state
 
     bookString :: Book -> String
     bookString book = bTitle book <> ", " <> bAuthor book
