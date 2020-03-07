@@ -23,6 +23,7 @@ dependencies:
 - aeson
 - aeson-casing
 - base >= 4.7 && < 5
+- containers
 - http-api-data
 - lucid
 - monad-logger

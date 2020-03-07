@@ -25,6 +25,7 @@ import           Database.Persist.Sql
 import           Data.Time ( UTCTime, getCurrentTime )
 import           GHC.Generics
 import           Web.Internal.FormUrlEncoded
+import qualified Data.Map.Strict as Map
 
 data NewSubscription = NewSubscription {
     nsEmail :: String
@@ -52,7 +53,23 @@ instance FromJSON Book where
 instance ToJSON Book where
     toJSON = genericToJSON $ aesonPrefix camelCase
 
+type BookMap = Map.Map String [Book]
+
+data WritingLink = WritingLink {
+    wlText :: String
+,   wlHref :: String
+} deriving (Show, Eq, Read, Generic)
+
+instance FromJSON WritingLink where
+    parseJSON = genericParseJSON $ aesonPrefix camelCase
+
+instance ToJSON WritingLink where
+    toJSON = genericToJSON $ aesonPrefix camelCase
+
+type WritingLinkMap = Map.Map String [WritingLink]
+
 data AppState = AppState {
   sql :: SqlBackend
-, readingList :: [Book]
+, readingList :: BookMap
+, writingLinks :: WritingLinkMap
 }

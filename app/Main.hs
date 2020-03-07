@@ -19,6 +19,7 @@ import           Network.Wai.Middleware.Cors
 import           Servant
 
 import qualified Data.Yaml as Y
+import qualified Data.Map.Strict as Map
 
 corsWithContentType :: Middleware
 corsWithContentType = cors (const $ Just policy)
@@ -29,11 +30,15 @@ corsWithContentType = cors (const $ Just policy)
 main :: IO ()
 main = runStdoutLoggingT . withSqliteConn ":memory:" $ \sqlite -> do
   flip runSqlConn sqlite $ runMigration migrateAll
-  eBooks <- liftIO $ Y.decodeFileEither "books.yml"
+  eBooks <- liftIO $ Y.decodeFileEither "./data/books.yml"
+  eWritingLinks <- liftIO $ Y.decodeFileEither "./data/writing-links.yml"
   
   let
-    parsedBooks = fromRight [] eBooks
-    appState = AppState { sql = sqlite, readingList = parsedBooks }
+    parsedBooks :: Map.Map String [Book]
+    parsedBooks = fromRight Map.empty eBooks
+    parsedWritingLinks :: Map.Map String [WritingLink]
+    parsedWritingLinks = fromRight Map.empty eWritingLinks
+    appState = AppState { sql = sqlite, readingList = parsedBooks, writingLinks = parsedWritingLinks }
   liftIO $ putStrLn $ show parsedBooks 
   lift . run 8080 . corsWithContentType . serve api $ hoistServer api (runH appState) routes
 

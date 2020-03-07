@@ -22,9 +22,10 @@ import Types
 
 data Routes route = Routes
     { _subscribe :: route :- "api" :> "subscriptions" :> ReqBody '[FormUrlEncoded, JSON] NewSubscription :> Post '[JSON] ()
-    , _getBooks :: route :- "api" :> "books" :> Get '[JSON] [Book]
+    , _getBooks :: route :- "api" :> "books" :> Get '[JSON] BookMap
     , _getHome :: route :- Get '[HTML] (Html ())
-    , _getReadingList :: route :- "books" :> Get '[HTML] (Html ())
+    , _getReadingList :: route :- "reading-list" :> Get '[HTML] (Html ())
+    , _getWriting :: route :- "writing" :> Get '[HTML] (Html ())
     , _getStaticAssets :: route :- "static" :> Raw
     }
   deriving (Generic)
@@ -40,6 +41,7 @@ routes = genericServerT Routes
     , _getBooks = getBooksHandler
     , _getHome = return renderHomePage
     , _getReadingList = renderBooksPage
+    , _getWriting = renderWritingPage
     , _getStaticAssets = serveDirectoryWebApp "./static"
     }
 
