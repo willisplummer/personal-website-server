@@ -1,6 +1,7 @@
   
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeApplications  #-}
+{-# LANGUAGE ScopedTypeVariables  #-}
 
 module Main where
 
@@ -15,6 +16,7 @@ import           Database.Persist.Postgresql
 
 import           Network.Wai.Handler.Warp  (run)
 import           Servant
+import           System.Environment
 
 
 import qualified Data.Yaml as Y
@@ -23,7 +25,8 @@ import Web.Heroku.Persist.Postgresql
 
 main :: IO ()
 main = do
-  pgConf                              <- postgresConf 5
+  (port :: Int) <- read <$> getEnv "PORT"
+  pgConf <- postgresConf 5
 
   eBooks <- liftIO $ Y.decodeFileEither "./data/books.yml"
   eWritingLinks <- liftIO $ Y.decodeFileEither "./data/writing-links.yml"
@@ -43,4 +46,4 @@ main = do
       runH s = Handler . flip runReaderT s
 
     liftIO $ putStrLn $ show parsedBooks
-    lift . run 8080 . serve api $ hoistServer api (runH appState) routes
+    lift . run port . serve api $ hoistServer api (runH appState) routes
