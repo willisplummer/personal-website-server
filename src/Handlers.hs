@@ -1,11 +1,13 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE DataKinds     #-}
 {-# LANGUAGE OverloadedStrings     #-}
+{-# LANGUAGE BlockArguments     #-}
 
 module Handlers where
 
 import           Control.Monad.Reader
 import           Control.Monad.Trans
+import Data.Text
 import Data.Time
 import Database.Persist.Sql
 import Lucid
@@ -33,19 +35,27 @@ renderBooksPage = do
     bookString :: Book -> String
     bookString book = bTitle book <> ", " <> bAuthor book
 
-  return $ do
-    h1_ "I've read these:"
-    ul_ (mapM_ (li_ . toHtml . bookString) books)
+  return $ html_ do
+    head_ do
+      title_ "Willis Plummer | Reading List"
+      link_ [rel_ "icon", href_ "/static/favicon.ico", type_ "image/x-icon"]
+    body_ do
+      h1_ "I've read these:"
+      ul_ (mapM_ (li_ . toHtml . bookString) books)
 
 renderHomePage :: Html ()
 renderHomePage = do
-        h1_ "Willis Plummer"
-        p_ $ b_ "I'm a coder and a poet etc"
-        p_ $ i_ "Check me out on the internet"
-        -- TODO: how do i make this a safe link using servant-lucid
-        p_ $ a_ [href_ "/books"] "i've been keeping a reading list"
-        p_ "You should probably subscribe to my mailing list"
-        -- can i make this safe too?
-        form_ [method_ "post", action_ "/api/subscriptions"] $ do
-          input_ [type_ "text", name_ "email"]
-          button_ "subscribe"
+  html_ do
+    head_ do
+      title_ "Willis Plummer"
+      link_ [rel_ "icon", href_ "/static/favicon.ico", type_ "image/x-icon"]
+      script_ [src_ "/static/main.js"] ("" :: Text)
+    body_ do
+      h1_ "Willis Plummer"
+      p_ $ b_ "I'm a coder and a poet etc"
+      p_ $ i_ "Check me out on the internet"
+      -- TODO: how do i make this a safe link using servant-lucid
+      p_ $ a_ [href_ "/books"] "i've been keeping a reading list"
+      p_ "You should probably subscribe to my mailing list"
+      input_ [id_ "email-input", type_ "text", name_ "email"]
+      button_ [id_ "submit-button"] "subscribe"

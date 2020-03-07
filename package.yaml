@@ -33,6 +33,7 @@ dependencies:
 - servant
 - servant-lucid
 - servant-server
+- text
 - time
 - transformers
 - wai

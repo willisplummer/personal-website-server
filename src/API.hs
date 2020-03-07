@@ -14,6 +14,7 @@ import Servant
 
 import Servant.API.Generic
 import Servant.Server.Generic
+import Servant.Server.StaticFiles
 import Servant.HTML.Lucid
 
 import Handlers
@@ -24,6 +25,7 @@ data Routes route = Routes
     , _getBooks :: route :- "api" :> "books" :> Get '[JSON] [Book]
     , _getHome :: route :- Get '[HTML] (Html ())
     , _getReadingList :: route :- "books" :> Get '[HTML] (Html ())
+    , _getStaticAssets :: route :- "static" :> Raw
     }
   deriving (Generic)
 
@@ -38,5 +40,6 @@ routes = genericServerT Routes
     , _getBooks = getBooksHandler
     , _getHome = return renderHomePage
     , _getReadingList = renderBooksPage
+    , _getStaticAssets = serveDirectoryWebApp "./static"
     }
 
