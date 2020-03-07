@@ -10,9 +10,11 @@ todos:
 ### Deploying
 
 ```
-docker-compose build
-docker tag  willisplummer/haskell-personal-website:latest
-docker push willisplummer/haskell-blog:latest
+docker build .
+docker tag willisplummer/haskell-personal-website:latest
+heroku container:login
+heroku container:push web
+heroku container:release web
 ```
 
 ## Update remote docker image

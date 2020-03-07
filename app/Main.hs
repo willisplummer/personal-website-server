@@ -13,19 +13,11 @@ import           Control.Monad.Logger
 import           Control.Monad.Reader
 import           Data.Either
 import           Database.Persist.Sqlite
-import           Network.Wai (Middleware)
 import           Network.Wai.Handler.Warp  (run)
-import           Network.Wai.Middleware.Cors
 import           Servant
 
 import qualified Data.Yaml as Y
 import qualified Data.Map.Strict as Map
-
-corsWithContentType :: Middleware
-corsWithContentType = cors (const $ Just policy)
-    where
-      policy = simpleCorsResourcePolicy
-        { corsRequestHeaders = ["Content-Type"] }
 
 main :: IO ()
 main = runStdoutLoggingT . withSqliteConn ":memory:" $ \sqlite -> do
@@ -40,7 +32,7 @@ main = runStdoutLoggingT . withSqliteConn ":memory:" $ \sqlite -> do
     parsedWritingLinks = fromRight Map.empty eWritingLinks
     appState = AppState { sql = sqlite, readingList = parsedBooks, writingLinks = parsedWritingLinks }
   liftIO $ putStrLn $ show parsedBooks 
-  lift . run 8080 . corsWithContentType . serve api $ hoistServer api (runH appState) routes
+  lift . run 8080 . serve api $ hoistServer api (runH appState) routes
 
   where
     runH appState = Handler . flip runReaderT appState
