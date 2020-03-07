@@ -1,15 +1,280 @@
 2020:
-  - title: second marriage
-    author: barthelme
-  - title: florida keys
-    author: joy williams
+  - title: sam the cat and other stories
+    author: matthew klam
+  - title: the lichtenberg figures
+    author: ben lerner
+  - title: normal people
+    author: sally rooney
+  - title: the topeka school
+    author: ben lerner
 2019:
+  - title: "there must be some mistake"
+    author: "frederick barthelme"
+  - title: waveland
+    author: frederick barthelme
+  - title: elroy nights
+    author: frederick barthelme
+  - title: catching the big fish
+    author: david lynch
+  - title: why did i ever
+    author: mary robison
+  - title: revolutionary road
+    author: richard yates
+  - title: lightning rods
+    author: helen dewitt
+  - title: painted desert
+    author: frederick barthelme
+  - title: fathers day
+    author: matthew zapruder
+  - title: rabbit redux
+    author: john updike
+  - title: was this man a genius? talks with andy kaufman
+    author: julie hecht
+  - title: the brothers
+    author: frederick barthelme
+  - title: the poems of alfred starr hamilton
+    author: alfred starr hamilton
+  - title: the last samurai
+    author: helen dewitt
+  - title: natural selection
+    author: frederick barthelme
+  - title: conversations with friends
+    author: sally rooney
+  - title: temple of the golden pavilion
+    author: yukio mishima
+  - title: tom sawyer
+    author: joey grantham
+  - title: magical negro
+    author: morgan parker
+  - title: there are more beautiful things than beyoncé
+    author: morgan parker
+  - title: woods and clouds interchangeable
+    author: michael  earl craig
+  - title: chroma
+    author: frederick barthelme
+  - title: the secret history
+    author: donna tartt
+  - title: an amateur's guide to the night
+    author: mary robison
+  - title: tracer
+    author: frederick barthelme
   - title: second marriage
-    author: barthelme
-  - title: florida keys
-    author: joy williams
+    author: frederick barthelme
+  - title: the ghost soldiers
+    author: james tate
+  - title: wittgenstein's mistress
+    author: david markson
+  - title: death's end
+    author: liu cixin
+  - title: arm of the sphinx
+    author: josiah bancroft
+  - title: senlin ascends
+    author: josiah bancroft
+  - title: the new old paint
+    author: susie timmons
+  - title: the lost pilot
+    author: james tate
+  - title: locked from the outside
+    author: susie timmons
+  - title: starship troopers
+    author: robert a heinlein
+  - title: joy of missing out
+    author: ana bozicevic
+  - title: 24 pages and other poems
+    author: lisa fishman
+  - title: hog wild
+    author: susie timmons
+  - title: dungeon world
+    author: sage latorra and adam koebel
+  - title: autobiography of death
+    author: kim hyesoon
+  - title: touché
+    author: rod smith
+  - title: a roll of the dice will never abolish chance
+    author: stéphane mallarmé
+  - title: spring and all
+    author: william  carlos williams
+  - title: childhood's end
+    author: arthur c clarke
+  - title: happy trails to you
+    author: julie hecht
+  - title: the unprofessionals
+    author: julie hecht
+  - title: moon deluxe
+    author: frederick barthelme
+  - title: "& the real stormy daniels band"
+    author: rebecca r. peel
+  - title: the days of abandonment
+    author: elena ferrante
+  - title: do the windows open
+    author: julie hecht
 2018:
-  - title: second marriage
-    author: barthelme
-  - title: florida keys
+  - title: "rabbit, run"
+    author: john updike
+  - title: liveblog (didnt finish)
+    author: megan boyle"
+  - title: reveries of a solitary walker
+    author: jean-jacques rousseau"
+  - title: sometimes a great notion
+    author: ken kesey"
+  - title: reasons to live
+    author: amy hempel"
+  - title: the contemporary short story packet
+    author: ed. tao lin for course at sarah lawrence"
+  - title: i love dick
+    author: chris kraus"
+  - title: harry potter and the sorcerer's stone
+    author: jk rowling"
+  - title: the dark forest
+    author: liu cixin"
+  - title: the three-body problem
+    author: liu cixin"
+  - title: at the gates of the animal kingdom
+    author: amy hempel"
+  - title: wapshot scandal
+    author: donald cheever"
+  - title: the passion according to g.h.
+    author: clarice lispector"
+  - title: reasons to live
+    author: amy hempel"
+  - title: bob the gambler
+    author: frederick barthelme"
+  - title: in the belly of the beast
+    author: jack abbot"
+  - title: journals
+    author: paul blackburn"
+  - title: jesus' son
+    author: dennis johnson"
+  - title: (american short story anthology i don't remember the name of, read about a third, anne beattie bio inaccurately described falling in place as a short story collection)
+    author: unsure"
+  - title: subtraction
+    author: mary robison"
+  - title: the quick and the dead
+    author: joy williams"
+  - title: oh!
+    author: mary robison"
+  - title: the cows
+    author: lydia davis"
+  - title: life is with people (drawings)
+    author: atticus lish"
+  - title: dubliners
+    author: james joyce"
+  - title: i await the devil's coming
+    author: mary maclane"
+  - title: two against one
+    author: frederick barthelme"
+  - title: a streetcar named desire
+    author: tennessee williams"
+  - title: breaking open the head
+    author: daniel pinchbeck"
+  - title: three talks
+    author: joshua beckman"
+  - title: the lives of the poems
+    author: joshua beckman"
+  - title: ii cybernetic frontiers
+    author: stewart brand"
+  - title: the others
+    author: matthew rohrer"
+  - title: motherhood
+    author: sheila heti"
+  - title: the homesick diner
+    author: anne tyler"
+  - title: ties
+    author: domenico starnone"
+  - title: fuck seth price
+    author: seth price"
+  - title: the bell jar
+    author: sylvia plath"
+  - title: tell me a riddle
+    author: tillie olsen"
+  - title: chilly scenes of winter
+    author: ann beattie"
+  - title: trip (galley)
+    author: tao lin"
+  - title: god box
+    author: mallory whitten"
+  - title: milk and henny
+    author: peter bd"
+  - title: the wapshot chronicle
+    author: john cheever"
+  - title: todd
+    author: andrew james weatherhead"
+  - title: thin kimono
+    author: michael earl craig"
+  - title: talkativeness
+    author: michael earl craig"
+  - title: the girls
+    author: emma cline"
+  - title: i would do anything for love
+    author: al bedell"
+  - title: true hallucinations
+    author: terence mckenna
+2017:
+  - title: the invisible landscape (didn't finish)
+    author: terence mckenna
+  - title: the old man and the sea
+    author: ernest hemingway
+  - title: northern california haiku
+    author: mallory whitten
+  - title: the psychedelic explorer's guide
+    author: james fadiman
+  - title: play it as it lays
+    author: joan didion
+  - title: a sleep and a forgetting
+    author: william dean howell
+  - title: falling in place
+    author: ann beattie
+  - title: do androids dream of electric sheep
+    author: philip k dick
+  - title: taipei  (re-read)
+    author: tao lin
+  - title: junky
+    author: william burroughs
+  - title: eileen
+    author: otessa moshfegh
+  - title: thanks
+    author: zachary german
+  - title: you got to burn to shine
+    author: john giorno
+  - title: new yorker stories (didnt finish)
+    author: ann beattie
+  - title: honored guest (didnt finish)
     author: joy williams
+  - title: jesus' son (didnt finish)
+    author: denis johnson
+  - title: the contemporary short story packet (didnt finish)
+    author: ed. tao lin
+  - title: homesick for another planet
+    author: otessa moshfegh
+  - title: elbowing the seducer
+    author: t. gertler
+  - title: literally show me a healthy person
+    author: darcie wilder
+  - title: falconer
+    author: john cheever
+  - title: ajebota
+    author: precious okoyomon
+  - title: a little life (didnt finish)
+    author: hanya yanagihara
+  - title: [assorted zines]
+    author: rebecca warlick
+  - title: junky II
+    author: peter bd
+  - title: the story of the lost child
+    author: elena ferrante
+  - title: those who leave and those who stay
+    author: elena ferrante
+  - title: cool girls hate their bodies
+    author: david fishkind
+  - title: the story of a new name
+    author: elena ferrante
+  - title: o.k. (didnt finish)
+    author: kool a.d.
+  - title: memory foam
+    author: adam soldofsky
+  - title: loving the ocean wont keep it from killing you
+    author: rachel bell
+  - title: my brilliant friend
+    author: elena ferrante
+  - title: the big u
+    author: neal stephenson
