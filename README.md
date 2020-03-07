@@ -4,6 +4,7 @@ todos:
 - validate email addresses
 - connection  pooling
 - isolate effects and test
+- ssl
 
 ### Update remote docker image
 
