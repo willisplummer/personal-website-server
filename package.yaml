@@ -24,13 +24,15 @@ dependencies:
 - aeson-casing
 - base >= 4.7 && < 5
 - containers
+- heroku-persistent
 - http-api-data
 - lucid
 - monad-logger
+- monad-control
 - mtl
 - persistent
 - persistent-template
-- persistent-sqlite
+- persistent-postgresql
 - servant
 - servant-lucid
 - servant-server
