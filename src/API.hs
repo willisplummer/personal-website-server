@@ -26,6 +26,7 @@ data Routes route = Routes
     , _getHome :: route :- Get '[HTML] (Html ())
     , _getReadingList :: route :- "reading-list" :> Get '[HTML] (Html ())
     , _getWriting :: route :- "writing" :> Get '[HTML] (Html ())
+    , _getCode :: route :- "code" :> Get '[HTML] (Html ())
     , _getStaticAssets :: route :- "static" :> Raw
     }
   deriving (Generic)
@@ -42,6 +43,7 @@ routes = genericServerT Routes
     , _getHome = return renderHomePage
     , _getReadingList = renderBooksPage
     , _getWriting = renderWritingPage
+    , _getCode = return renderCodePage
     , _getStaticAssets = serveDirectoryWebApp "./static"
     }
 

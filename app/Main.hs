@@ -31,6 +31,8 @@ main = do
   eBooks <- liftIO $ Y.decodeFileEither "./data/books.yml"
   eWritingLinks <- liftIO $ Y.decodeFileEither "./data/writing-links.yml"
 
+  putStrLn $ "running on " <> show port
+
   let
     connString = pgConnStr pgConf
 

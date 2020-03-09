@@ -38,7 +38,42 @@ headerNav = do
     span_ " | "
     a_ [href_ "/reading-list"] "reading"
     span_ " | "
-    a_ [href_ "https://github.com/willisplummer", target_ "blank"] "code"
+    a_ [href_ "/code"] "code"
+
+renderCodePage :: Html ()
+renderCodePage = do
+  html_ do
+    head_ do
+      title_ "Willis Plummer"
+      link_ [rel_ "icon", href_ "/static/favicon.ico", type_ "image/x-icon"]
+    body_ do
+      headerNav
+    p_ do
+      span_ "I've got a lot of projects on my "
+      a_ [href_ "https://github.com/willisplummer", target_ "blank"] "Github"
+      span_ "."
+    p_ "A few I'm proud of:"
+    ul_ do
+      li_ do
+        span_ "This website is a Haskell server. The HTML is generated with Lucid,\
+              \there's a postgresql database managed by Persistent to handle email\
+              \subscriptions, and the API is setup using Servant. Check out "
+        a_
+          [href_ "https://github.com/willisplummer/personal-website-server", target_ "blank"]
+          "the code"
+        span_ "."
+      li_ do
+        span_ "I worked with my friend Luiza Dale to build a web app for 'publicly texting'.\
+              \Basically, you can set up a new conversation by providing two phone numbers\
+              \and then the server will text both of them via Twilio. Anything they reply to\
+              \that message will be recorded to the database and then proxied along to the other person.\
+              \This facilitates having a conversation over text message that is recorded and displayed\
+              \online and in realtime. Check out "
+        a_ [href_ "https://github.com/willisplummer/public-texting", target_ "blank"] "the code"
+        span_ " and "
+        a_ [href_ "https://public-texting.herokuapp.com/", target_ "blank"] "the site"
+        span_ "."
+
 
 renderBooksPage :: (MonadReader AppState m) => m (Html ())
 renderBooksPage = do
