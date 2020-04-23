@@ -9,7 +9,7 @@ todos:
 ### Update remote docker image
 
 ```
-docker build . --tag willisplummer/haskell-personal-website
+docker build . --tag willisplummer/haskell-personal-website --cache-from willisplummer/haskell-personal-website:latest
 docker push willisplummer/haskell-personal-website:latest
 ```
 
@@ -17,8 +17,8 @@ docker push willisplummer/haskell-personal-website:latest
 
 ```
 heroku container:login
-heroku container:push web
-heroku container:release web
+heroku container:push web -a heroku-personal-website
+heroku container:release web -a heroku-personal-website
 ```
 
 ### Migrating the heroku db
